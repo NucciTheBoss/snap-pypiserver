@@ -14,7 +14,15 @@ confinement: strict
 compression: lzo
 architectures:
   - build-on: amd64
-    build-for: all
+    build-for: amd64
+  - build-on: amd64
+    build-for: arm64
+  - build-on: amd64
+    build-for: armhf
+  - build-on: amd64
+    build-for: ppc64el
+  - build-on: amd64
+    build-for: s390x
 
 apps:
   pypi-server:
