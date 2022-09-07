@@ -1,0 +1,32 @@
+name: pypi-server
+version: 1.5.0
+license: MIT
+summary: A minimal server for use with pip/easy_install
+description: |
+  pypiserver is a minimal PyPI compatible server for pip or easy_install.
+  It is based on bottle and serves packages from regular directories. 
+  Wheels, bdists, eggs and accompanying PGP-signatures can be uploaded 
+  either with pip, setuptools, twine, pypi-uploader, or simply copied with scp.
+
+base: core22
+grade: stable
+confinement: strict
+compression: lzo
+architectures:
+  - build-on: amd64
+    build-for: all
+
+apps:
+  pypi-server:
+    command: bin/pypi-server
+    plugs:
+      - home
+      - network
+      - network-bind
+      - removable-media
+
+parts:
+  pypi-server:
+    plugin: python
+    source: https://github.com/pypiserver/pypiserver.git
+    source-tag: v1.5.0
